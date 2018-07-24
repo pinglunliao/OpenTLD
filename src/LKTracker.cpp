@@ -1,5 +1,6 @@
 #include <LKTracker.h>
 using namespace cv;
+using namespace std;
 
 LKTracker::LKTracker(){
   term_criteria = TermCriteria( TermCriteria::COUNT+TermCriteria::EPS, 20, 0.03);

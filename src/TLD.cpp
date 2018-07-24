@@ -659,6 +659,7 @@ bool bbcomp(const BoundingBox& b1,const BoundingBox& b2){
 int TLD::clusterBB(const vector<BoundingBox>& dbb,vector<int>& indexes){
   //FIXME: Conditional jump or move depends on uninitialised value(s)
   const int c = dbb.size();
+
   //1. Build proximity matrix
   Mat D(c,c,CV_32F);
   float d;
@@ -670,9 +671,18 @@ int TLD::clusterBB(const vector<BoundingBox>& dbb,vector<int>& indexes){
       }
   }
   //2. Initialize disjoint clustering
+  /*
  float L[c-1]; //Level
  int nodes[c-1][2];
  int belongs[c];
+ */
+ float *L = new float[c - 1];
+ int **nodes = new int*[c - 1];
+ for (int i = 0; i < c - 1; i++)
+	 nodes[i] = new int[2];
+ 
+ int *belongs = new int[c];
+
  int m=c;
  for (int i=0;i<c;i++){
     belongs[i]=i;

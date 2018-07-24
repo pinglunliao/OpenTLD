@@ -3,7 +3,7 @@
 #include <LKTracker.h>
 #include <FerNNClassifier.h>
 #include <fstream>
-
+#include <PatchGenerator.h>
 
 //Bounding Boxes
 struct BoundingBox : public cv::Rect {
